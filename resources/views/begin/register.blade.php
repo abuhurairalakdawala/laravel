@@ -1,7 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+	        	<li><a href="/login">Login</a></li>
+	        	<li><a href="/register">Register</a></li>
+	        </ul>
+	    </div>
+	</div>
+</nav>
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">

@@ -4,23 +4,29 @@ $(DOC).ready(function(){
 		t=$(this)
 		$('.user_reg_btn').prop('disabled',true)
 		$('.user_reg_btn .fa').removeClass('hide')
+		$('.form-field-err').hide()
 		$.ajax({
 			type:'post',
 			url:t.attr('action'),
 			data:t.serialize(),
 			dataType:'json',
-			success:function(){
+			success:function(r){
 				alert('done')
+				if(r.success){
+					t[0].reset();
+					window.location.href='/home'
+				}
 			},
 			error:function(err){
-				errors = $.parseJSON(err.responseText)
-				console.log(errors)
-				$('.form-field-err').hide()
-				$.each(errors, function(index, value) {
-					console.log(index)
-					$('.'+index+'-err').show().html(value)
-					console.log(value)
-				})
+				if(err.status==422){
+					errors = $.parseJSON(err.responseText)
+					$.each(errors, function(index, value) {
+						$('.'+index+'-err').show().html(value)
+					})
+				} else {
+					alert('An Unknown Error Occured!\nPlease Try Again!')
+				}
+				console.log(err)
 			},
 			complete:function(){
 				$('.user_reg_btn .fa').addClass('hide')
