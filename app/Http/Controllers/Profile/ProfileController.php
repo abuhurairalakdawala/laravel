@@ -10,7 +10,14 @@ class ProfileController extends Controller
     public function index()
     {
     	\App\Facades\Assets::setJs('profile.js');
-    	$posts = \App\Post::with('user')->get();
+    	$posts = \App\Post::with(
+            [
+                'user' => function($query){
+                        $query->select('id','firstname','lastname');
+                    }
+            ]
+        )->orderBy('id','DESC')->select(array('id','post_content','user_id'))->get();
+        // return $posts;
     	return view('profile.home',array('posts'=>$posts));
     }
     public function post_new_content(Request $request)
@@ -23,5 +30,14 @@ class ProfileController extends Controller
     		'user_id' => auth()->id()
     	]);
     	$post->save();
+        return array('data'=>$post);
+    }
+    public function delete_post(\App\Post $id)
+    {
+        if($id->user_id===auth()->id()){
+            $id->delete();
+            return json_encode(array('success'=>true));
+        }
+        return json_encode(array('success'=>false));
     }
 }

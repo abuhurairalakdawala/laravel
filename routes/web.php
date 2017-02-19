@@ -9,3 +9,4 @@ Route::post('/register_user', 'Begin\RegisterController@register')->middleware('
 Route::get('/logout', 'Begin\LoginController@logout');
 Route::get('/home', 'Profile\ProfileController@index')->middleware('auth');
 Route::post('/post_new_content', 'Profile\ProfileController@post_new_content')->middleware('auth');
+Route::get('/delete_post/{id}', 'Profile\ProfileController@delete_post')->middleware('auth');
