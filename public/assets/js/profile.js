@@ -1,0 +1,15 @@
+$(DOC).ready(function(){
+	$('#new_post_form').submit(function(e){
+		PD(e)
+		t=$(this)
+		$.ajax({
+			type:'post',
+			url:t.attr('action'),
+			dataType:'json',
+			data:t.serialize(),
+			success:function(r){
+				console.log(r)
+			}
+		})
+	})
+})
