@@ -11,7 +11,6 @@ $(DOC).ready(function(){
 			data:t.serialize(),
 			dataType:'json',
 			success:function(r){
-				alert('done')
 				if(r.success){
 					t[0].reset();
 					window.location.href='/home'
