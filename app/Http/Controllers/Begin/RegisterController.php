@@ -16,12 +16,11 @@ class RegisterController extends Controller
     }
     public function register(Request $request)
     {
-    	// var_dump($_POST);
-    	$rules = $this->validate($request, array(
-    		'firstname' => 'required',
-    		'lastname' => 'required',
-    		'email' => 'required',
-    		'password' => 'required|confirmed'
+        $this->validate($request, array(
+    		'firstname' => 'required|max:30',
+    		'lastname' => 'required|max:30',
+    		'email' => 'required|email|max:100|unique:users',
+    		'password' => 'required|min:4|confirmed'
     	));
     }
 }
