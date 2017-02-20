@@ -32,6 +32,10 @@ class ProfileController extends Controller
     }
     public function post_new_content(Request $request)
     {
+        // var_dump($request->hasFile('filename'));
+        $imageName = mt_rand().'.'.$request->file('filename')->getClientOriginalExtension();
+        var_dump($imageName);
+        $path = $request->file('filename')->move('images',$imageName);
     	$this->validate($request, [
     		'content' => 'required'
     	]);

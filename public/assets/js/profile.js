@@ -6,7 +6,9 @@ $(DOC).ready(function(){
 			type:'post',
 			url:t.attr('action'),
 			dataType:'json',
-			data:t.serialize(),
+			data:new FormData(this),
+			contentType:false,
+			processData:false,
 			success:function(r){
 				if(r.data){
 					$('.post_box').val('')
