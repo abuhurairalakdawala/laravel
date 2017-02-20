@@ -9,15 +9,25 @@ class ProfileController extends Controller
 {
     public function index()
     {
+        \DB::enableQueryLog();
     	\App\Facades\Assets::setJs('profile.js');
     	$posts = \App\Post::with(
             [
                 'user' => function($query){
                         $query->select('id','firstname','lastname');
-                    }
+                    },
+                'userPostLike' => function($query){
+                    $query->select('user_id','post_id')->with(
+                        [
+                            'user' => function($query){
+                                $query->select('id','firstname','lastname');
+                            }
+                        ]
+                    );
+                }
             ]
         )->orderBy('id','DESC')->select(array('id','post_content','user_id'))->get();
-        // return $posts;
+        var_dump(\DB::getQueryLog());
     	return view('profile.home',array('posts'=>$posts));
     }
     public function post_new_content(Request $request)

@@ -19,6 +19,9 @@
 		    		<li class="list-group-item" data-id="{{$post->id}}">
 		    			{!! str_replace("\n",'<br>',e($post->post_content)) !!}<br>
 		    			By : {{$post->user->firstname}} {{$post->user->lastname}}
+		    			@foreach ($post->userPostLike as $userPostLike)
+		    				<?php var_dump($userPostLike->user->firstname); ?>
+		    			@endforeach
 		    		</li>
 		    	@endforeach
 			</ul>

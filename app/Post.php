@@ -13,4 +13,8 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function userPostLike()
+    {
+    	return $this->hasMany('App\UserPostLike');
+    }
 }
