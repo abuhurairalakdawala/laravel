@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        \DB::enableQueryLog();
+        // \DB::enableQueryLog();
     	\App\Facades\Assets::setJs('profile.js');
     	$posts = \App\Post::with(
             [
@@ -27,7 +27,7 @@ class ProfileController extends Controller
                 }
             ]
         )->orderBy('id','DESC')->select(array('id','post_content','user_id'))->get();
-        var_dump(\DB::getQueryLog());
+        // var_dump(\DB::getQueryLog());
     	return view('profile.home',array('posts'=>$posts));
     }
     public function post_new_content(Request $request)
