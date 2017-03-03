@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?=\App\Facades\HtmlTags::title()?></title>
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
     <?=\App\Facades\Assets::css()?>
 </head>
 <body>
