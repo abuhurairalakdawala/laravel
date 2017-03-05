@@ -15,3 +15,6 @@ Route::post('/dashAction', 'My\MyDash@indexAction');
 Route::get('/generate_code', 'CodeGeneratorController@index');
 Route::post('/generate_code_process', 'CodeGeneratorController@indexAction');
 Route::post('/req', 'CodeGeneratorController@req');
+
+
+Route::get('/dashboard', 'DashboardController@index');

@@ -1,15 +1,54 @@
-
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-// Variables
 @import "variables";
 
-// Bootstrap
+@font-face {
+  font-family: 'Raleway';
+  src: url(/fonts/raleway/Raleway-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url(/fonts/raleway/Raleway-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url(/fonts/raleway/Raleway-Italic.ttf);
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url(/fonts/raleway/Raleway-SemiBold.ttf);
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url(/fonts/raleway/Raleway-Light.ttf);
+  font-weight: 300;
+  font-style: normal;
+}
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
-$red:red;
-
-body{
-	color:$red;
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+.form-field-err{
+  font-size:12px;
+  color:#ff1744;
+  font-weight:bold;
+  margin:0;
+  display:none;
+}
+.date-input{
+  width:auto;
+  display:inline-block;
+}
+table{
+  background-color:#ffffff;
+}
+.pagination{
+  margin:0;
+}
+.margin-l10{
+  margin-left:10px;
 }
