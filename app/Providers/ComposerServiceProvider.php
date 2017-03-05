@@ -7,11 +7,10 @@ use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
 {
-    protected $defer = true;
     public function boot()
     {
         View::composer(
-            'dashboard', 'App\Http\ViewComposers\ProfileComposer'
+            ['dashboard'], 'App\Composers\LayoutComposer'
         );
     }
 }

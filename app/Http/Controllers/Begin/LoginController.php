@@ -23,7 +23,7 @@ class LoginController extends Controller
             'is_active' => 1
         );
         if (Auth::attempt($user)) {
-        	return redirect('home');
+        	return redirect('dashboard');
         }
         return redirect('login')
             ->with('login_error', 'Incorrect email/password combination.')

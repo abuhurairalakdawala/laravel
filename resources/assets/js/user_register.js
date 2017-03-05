@@ -13,7 +13,7 @@ $(DOC).ready(function(){
 			success:function(r){
 				if(r.success){
 					t[0].reset();
-					window.location.href='/home'
+					window.location.href='/dashboard'
 				}
 			},
 			error:function(err){
@@ -33,4 +33,5 @@ $(DOC).ready(function(){
 			}
 		})
 	})
+	$('.paginator-dropdown').val(5)
 })

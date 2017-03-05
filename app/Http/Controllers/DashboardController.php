@@ -9,19 +9,25 @@ class DashboardController extends Controller
 {
     public function index()
     {
-    	$data = \App\Order::with(
-    		[
-    			'product' => function($query){
-                    		$query->select('id','sku','product_name');
-                	},
-                'customer' => function($query){
-                			$query->select('id', 'customer_name');
-                	},
-                'order_status' => function($query){
-                			$query->select('id','name');
-                }
-    		]
-    	)->select('id', 'product_id', 'customer_id', 'status_id', 'inward_date', 'order_quantity', 'created_at')->orderBy('id','DESC')->paginate(5);
+    	$data = \App\Order::orderDashboard();
     	return view('dashboard', [ 'table' => $data ]);
+    }
+    public function dashboardAction()
+    {
+    	var_dump($_POST);
+    	exit();
+    	return redirect()->back();
+    }
+    public function dashboardOptions(Request $request)
+    {
+    	$this->validate($request, array(
+    		'id.*' => 'required|integer'
+    	));
+    	$query = \App\Order::inward_orders($request->id);
+    	if(!$query){
+    		echo json_encode(array('error' => "Something went wrong!\nPlease Try Again!"));
+    		exit();
+    	}
+    	echo json_encode(array('success' => "Order Inwarded Successfully!"));
     }
 }

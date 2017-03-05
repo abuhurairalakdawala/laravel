@@ -17,4 +17,6 @@ Route::post('/generate_code_process', 'CodeGeneratorController@indexAction');
 Route::post('/req', 'CodeGeneratorController@req');
 
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
+Route::post('/dashboardAction', 'DashboardController@dashboardAction')->middleware('auth');
+Route::post('/dashboardOptions', 'DashboardController@dashboardOptions')->middleware('auth');
