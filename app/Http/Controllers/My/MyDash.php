@@ -8,65 +8,30 @@ use Illuminate\Support\Facades\Input;
 
 class MyDash extends Controller
 {
-    public function index()
+    public function dashb()
     {
-        if(session()->has('indexAction')){
-            $table = \App\Post::orWhere('likes_count','like','%0%');
-            $table->paginate(2);
-        } else {
-            $table = \App\Post::paginate(2);
+        $filter = array();
+        if(session()->has('403cfa')) {
+            $filter = session('403cfa');
         }
-        $table->orWhere('likes_count','like','%%');
-
-        // return view("index", array('table' => $table));
+        $name_dd = \App\Customer::select('id','customer_name')->get();
+        return view("dashb", [ 'name_dd' => $name_dd, 'filter' => $filter ]);
     }
-    public function indexAction(Request $request)
-    {
+    public function req(Request $request){
         $data = [];
         if($request->id){
             $data['id'] = $request->id;
         }
-        if($request->post_content){
-            $data['pc'] = $request->post_content;
+        if($request->name){
+            $data['name'] = $request->name;
         }
-        if($request->likes_count){
-            $data['likes_count'] = $request->likes_count;
+        if($request->date_from){
+            $data['date_from'] = $request->date_from;
         }
-        if($request->comments_count){
-            $data['comments_count'] = $request->comments_count;
+        if($request->date_to){
+            $data['date_to'] = $request->date_to;
         }
-        if(!empty($data)){
-            session(['indexAction' => $data]);
-        }
-        return redirect('dash');
-    }
-    public function index()
-    {
-        if(session()->has('indexAction')){
-            $table = \App\Post::paginate(2);
-        } else {
-            $table = \App\Post::paginate(2);
-        }
-        return view("index", array('table' => $table));
-    }
-    public function indexAction(Request $request)
-    {
-        $data = [];
-        if($request->id){
-            $data['id'] = $request->id;
-        }
-        if($request->post_content){
-            $data['pc'] = $request->post_content;
-        }
-        if($request->likes_count){
-            $data['likes_count'] = $request->likes_count;
-        }
-        if($request->comments_count){
-            $data['comments_count'] = $request->comments_count;
-        }
-        if(!empty($data)){
-            session(['indexAction' => $data]);
-        }
-        return redirect('dash');
+        session([ '403cfa' => $data ]);
+        return redirect()->back();
     }
 }

@@ -10,8 +10,8 @@ Route::post('/post_new_content', 'Profile\ProfileController@post_new_content')->
 Route::get('/delete_post/{id}', 'Profile\ProfileController@delete_post')->middleware('auth');
 
 
-Route::get('/dash', 'My\MyDash@index');
-Route::post('/dashAction', 'My\MyDash@indexAction');
+Route::get('/dash', 'My\MyDash@dashb')->middleware('auth');
+Route::post('/dashAction', 'My\MyDash@req');
 Route::get('/generate_code', 'CodeGeneratorController@index');
 Route::post('/generate_code_process', 'CodeGeneratorController@indexAction');
 Route::post('/req', 'CodeGeneratorController@req');

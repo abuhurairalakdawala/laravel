@@ -10,7 +10,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            ['dashboard'], 'App\Composers\LayoutComposer'
+            ['dashb', 'dashboard'], 'App\Composers\LayoutComposer'
         );
     }
 }

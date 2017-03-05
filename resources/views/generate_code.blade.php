@@ -31,37 +31,6 @@
         		{{ csrf_field() }}
         	</form>
         	<div class="response"></div>
-            <form method="post" action="/req">
-                {{ csrf_field() }}
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox" class="checkbox_parent"> id</th>
-                            <th>Emails</th>
-                            <th>Created Date</th>
-                        </tr>
-                        <tr>        
-                            <td>
-                                <input class="form-control" type="text" name="id" value="@if(isset($filter['id'])){{ $filter['id'] }}@endif">
-                            </td>        
-                            <td>
-                                <select class="form-control" name="name"><option value="">Select An Option</option>
-                                    @foreach($name_dd as $value)
-                                        <option value="{{ $value->id }}">{{ $value->email }}</option>
-                                    @endforeach
-                                </select>
-                            </td>        
-                            <td>
-                                <input class="form-control date-input" type="text" name="c_date_from" value="@if(isset($filter['c_date_from'])){{ $filter['c_date_from'] }}@endif">
-                                <input class="form-control date-input" type="text" name="c_date_to" value="@if(isset($filter['c_date_to'])){{ $filter['c_date_to'] }}@endif">
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <button>ok</button>
-            </form>
         </div>
     </div>
 </div>

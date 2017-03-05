@@ -23,7 +23,7 @@ class Order extends Model
         $return = $query->with(
             [
                 'product' => function($query){
-                            $query->select('id','sku','product_name');
+                            $query->select('id','sku','product_name')->latest('id');
                     },
                 'customer' => function($query){
                             $query->select('id', 'customer_name');
@@ -32,7 +32,7 @@ class Order extends Model
                             $query->select('id','name');
                 }
             ]
-        )->select('id', 'product_id', 'customer_id', 'status_id', 'inward_date', 'order_quantity', 'created_at')->orderBy('id','DESC');
+        )->select('id', 'product_id', 'customer_id', 'status_id', 'inward_date', 'order_quantity', 'created_at')->latest('id');
         return $return->paginate($page);
     }
     public function scopeinward_orders($query,$ids)

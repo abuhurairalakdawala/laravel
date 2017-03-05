@@ -9,6 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        \App\Facades\HtmlTags::setTitle('OFT Dashboard');
     	$data = \App\Order::orderDashboard();
     	return view('dashboard', [ 'table' => $data ]);
     }
