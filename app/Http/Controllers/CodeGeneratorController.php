@@ -24,23 +24,6 @@ class CodeGeneratorController extends Controller
     	\App\Facades\Assets::setJs('code_generator.js');
     	return view('generate_code', [ 'name_dd' => $name_dd, 'filter' => $filter ]);
     }
-    public function req(Request $request){
-        $data = [];
-        if($request->id){
-            $data['id'] = $request->id;
-        }
-        if($request->name){
-            $data['name'] = $request->name;
-        }
-        if($request->c_date_from){
-            $data['c_date_from'] = $request->c_date_from;
-        }
-        if($request->c_date_to){
-            $data['c_date_to'] = $request->c_date_to;
-        }
-        session([ 'a53dd5' => $data ]);
-        return redirect()->back();
-    }
     public function indexAction(Request $request)
     {
     	$this->validate($request, [
@@ -161,11 +144,15 @@ class CodeGeneratorController extends Controller
     }
     public function store_post_in_session($input,$column)
     {
+        if(empty($input)){exit();}
         $return = '<pre>public function (Request $request){';
         $return .= "\n";
         $return .= $this->tab.'$data = [];';
         $return .= "\n";
         foreach ($input as $key => $value) {
+            if (empty($value)) {
+                continue;
+            }
             if($column[$key] == 3){
                 $return .= $this->tab.'if($request->'.$value.'_from){';
                 $return .= "\n$this->tab$this->tab";

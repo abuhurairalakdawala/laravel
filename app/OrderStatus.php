@@ -8,6 +8,6 @@ class OrderStatus extends Model
 {
     public function order()
     {
-        return $this->hasOne('App\Order');
+        return $this->hasMany('App\Order');
     }
 }

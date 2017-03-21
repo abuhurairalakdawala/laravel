@@ -20,3 +20,6 @@ Route::post('/req', 'CodeGeneratorController@req');
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 Route::post('/dashboardAction', 'DashboardController@dashboardAction')->middleware('auth');
 Route::post('/dashboardOptions', 'DashboardController@dashboardOptions')->middleware('auth');
+Route::post('/downloadOrders', 'DashboardController@downloadOrders')->middleware('auth');
+
+Route::resource('articles', 'ArticlesController');

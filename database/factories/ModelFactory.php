@@ -25,8 +25,8 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
 });
 $factory->define(App\Order::class, function (Faker\Generator $faker) {
 	return [
-		'product_id' => rand(1,20),
-		'customer_id' => rand(1,20),
+		'product_id' => rand(21,31),
+		'customer_id' => rand(20,30),
 		'status_id' => rand(1,6),
 		'order_quantity' => rand(1,10)
 	];

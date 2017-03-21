@@ -13,6 +13,7 @@ class ComposerStaticInit394612a4d6f9720f115a6e5d9b352dd9
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        '3a37ebac017bc098e9a86b35401e7a68' => __DIR__ . '/..' . '/mongodb/mongodb/src/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
@@ -60,11 +61,13 @@ class ComposerStaticInit394612a4d6f9720f115a6e5d9b352dd9
         array (
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
+            'Predis\\' => 7,
             'PhpParser\\' => 10,
         ),
         'M' => 
         array (
             'Monolog\\' => 8,
+            'MongoDB\\' => 8,
         ),
         'L' => 
         array (
@@ -191,6 +194,10 @@ class ComposerStaticInit394612a4d6f9720f115a6e5d9b352dd9
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -198,6 +205,10 @@ class ComposerStaticInit394612a4d6f9720f115a6e5d9b352dd9
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'MongoDB\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mongodb/mongodb/src',
         ),
         'League\\Flysystem\\' => 
         array (
@@ -282,6 +293,14 @@ class ComposerStaticInit394612a4d6f9720f115a6e5d9b352dd9
         ),
         'J' => 
         array (
+            'Jenssegers\\Mongodb' => 
+            array (
+                0 => __DIR__ . '/..' . '/jenssegers/mongodb/src',
+            ),
+            'Jenssegers\\Eloquent' => 
+            array (
+                0 => __DIR__ . '/..' . '/jenssegers/mongodb/src',
+            ),
             'JakubOnderka\\PhpConsoleHighlighter' => 
             array (
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
@@ -313,6 +332,7 @@ class ComposerStaticInit394612a4d6f9720f115a6e5d9b352dd9
     );
 
     public static $classMap = array (
+        'CreateArticleTabe' => __DIR__ . '/../..' . '/database/migrations/2017_03_21_043355_create_article_tabe.php',
         'CreateCustomersTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_04_144807_create_customers_table.php',
         'CreateOrderStatusesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_04_144916_create_order_statuses_table.php',
         'CreateOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_04_145238_create_orders_table.php',

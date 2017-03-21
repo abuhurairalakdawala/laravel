@@ -12,7 +12,28 @@ $('.dashboard-go-btn').click(function(){
 		$('.modal-text').html('Please Select An Option')
 		$('.modal').modal()
 	} else if(d_o == 'csv'){
-
+		ids = []
+		chk = $('.dashboard-table tbody').find('input[type="checkbox"]')
+		$.each(chk, function(k,v){
+			if($(this).is(':checked')){
+				ids.push($(this).val())
+			}
+		})
+		if(ids.length>0){
+			$.ajax({
+				type:'post',
+				url:'/downloadOrders',
+				data:{id:ids},
+				headers:CSRF,
+				dataType:'json',
+				success:function(r){
+					window.open('/export.csv', '_blank');
+				}
+			})
+		} else {
+			$('.modal-text').html('Please Select An Order')
+			$('.modal').modal()
+		}
 	} else if(d_o == 'inward'){
 		ids = []
 		chk = $('.dashboard-table tbody').find('input[type="checkbox"]')

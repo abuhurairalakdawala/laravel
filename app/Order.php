@@ -30,7 +30,7 @@ class Order extends Model
                     },
                 'order_status' => function($query){
                             $query->select('id','name');
-                }
+                    }
             ]
         )->select('id', 'product_id', 'customer_id', 'status_id', 'inward_date', 'order_quantity', 'created_at')->latest('id');
         return $return->paginate($page);
@@ -38,5 +38,17 @@ class Order extends Model
     public function scopeinward_orders($query,$ids)
     {
         return $query->whereIn('id', $ids)->update(array('inward_date' => date('Y-m-d H:i:s')));
+    }
+    public function getCreatedAtAttribute($value)
+    {
+        return $value;
+    }
+    public function getOidPidAttribute()
+    {
+        return $this->attributes['id'].'_'.$this->product->sku;
+    }
+    public function scopesort_by_id($query)
+    {
+        return $query->orderBy('id', 'desc');
     }
 }

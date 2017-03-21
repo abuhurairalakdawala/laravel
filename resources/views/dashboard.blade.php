@@ -8,7 +8,7 @@
         		{{ csrf_field() }}
         		<div class="panel panel-default">
 				  <div class="panel-body">
-					<div class="pull-left">{{ $table->links() }}</div>
+					<div class="pull-left">{{ $table->links('layouts.no_of_pages') }}</div>
 				    <div class="pull-left"><button class="btn margin-l10 btn-primary">Search</button></div>
 				    <div class="pull-left margin-l10">{!! Dropdown::paginator() !!}</div>
 				    <div class="pull-left margin-l10">{!! Dropdown::dashboard_option() !!}</div>
@@ -51,7 +51,7 @@
 							<td>{{ $row->order_status->name }}</td>
 							<td>{{ $row->inward_date }}</td>
 							<td>{{ $row->created_at }}</td>
-							<td></td>
+							<td>{{ $row->oid_pid }}</td>
 						</tr>
 						@endforeach
 					</tbody>
