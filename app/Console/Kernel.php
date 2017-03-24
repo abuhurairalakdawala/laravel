@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        ConsoleCmd::class
+        ConsoleCmd::class,
+        Commands\SolrSeeding::class
     ];
 
     /**

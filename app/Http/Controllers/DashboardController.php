@@ -21,7 +21,7 @@ class DashboardController extends Controller
         // }
         // return( $order->product );
      //    \App\Facades\HtmlTags::setTitle('OFT Dashboard');
-    	// $data = \App\Order::orderDashboard();
+    	$data = \App\Order::orderDashboard();
         // $page_no = 1;
         // if(\Illuminate\Support\Facades\Input::has('page')){
         //     $page_no = \Illuminate\Support\Facades\Input::get('page');
@@ -49,10 +49,53 @@ class DashboardController extends Controller
         // foreach ($paginator->items() as $document) {
             // var_dump($document);
         // }
-    	// return view('dashboard', [ 'table' => $data ]);
-        $data = \App\Facades\Solr::paginate('solr.demos');
-        return view('solr', [ 'data' => $data ]);
-
+    	return view('dashboard', [ 'table' => $data ]);
+    }
+    public function solrDashboard()
+    {
+        $filter = array();
+        if(session()->has('84e656')) {
+            $filter = session('84e656');
+        }
+        $solr = new \App\Facades\Solr('orders');
+        $data = $solr->paginate(array('per_page'=>5));
+        $order_status_dd = \App\OrderStatus::select('id','name')->get();
+        return view('solr', [ 'data' => $data, 'order_status_dd' => $order_status_dd, 'filter' => $filter ]);
+    }
+    public function solrDashboardAction(Request $request){
+        $data = [];
+        if($request->id){
+            $data['id'] = $request->id;
+        }
+        if($request->product_name){
+            $data['product_name'] = $request->product_name;
+        }
+        if($request->product_sku){
+            $data['product_sku'] = $request->product_sku;
+        }
+        if($request->customer_name){
+            $data['customer_name'] = $request->customer_name;
+        }
+        if($request->order_quantity){
+            $data['order_quantity'] = $request->order_quantity;
+        }
+        if($request->order_status){
+            $data['order_status'] = $request->order_status;
+        }
+        if($request->inward_date_from){
+            $data['inward_date_from'] = $request->inward_date_from;
+        }
+        if($request->inward_date_to){
+            $data['inward_date_to'] = $request->inward_date_to;
+        }
+        if($request->order_date_from){
+            $data['order_date_from'] = $request->order_date_from;
+        }
+        if($request->order_date_to){
+            $data['order_date_to'] = $request->order_date_to;
+        }
+        session([ '84e656' => $data ]);
+        return redirect()->back();
     }
     public function dashboardAction()
     {

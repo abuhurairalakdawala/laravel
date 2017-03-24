@@ -23,3 +23,5 @@ Route::post('/dashboardOptions', 'DashboardController@dashboardOptions')->middle
 Route::post('/downloadOrders', 'DashboardController@downloadOrders')->middleware('auth');
 
 Route::resource('articles', 'ArticlesController');
+Route::get('/solr_dashboard', 'DashboardController@solrDashboard');
+Route::post('/solr_dashboard_action', 'DashboardController@solrDashboardAction');

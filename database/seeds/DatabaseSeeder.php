@@ -7,10 +7,10 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        // factory(App\Customer::class, 10)->create();
-        // factory(App\Product::class, 10)->create();
-        // factory(App\Order::class, 10)->create();
-        factory(App\Models\Article::class, 10)->create();
+        // factory(App\Customer::class, 50)->create();
+        // factory(App\Product::class, 1)->create();
+        $this->call(OrdersSeeder::class);
+        // factory(App\Models\Article::class, 10)->create();
     }
     public function add_order_status()
     {
