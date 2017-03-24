@@ -13,8 +13,24 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = \App\Models\Article::all();
-        return view('articles.index');
+        $articles = \App\Models\Article::paginate(5);
+        // echo 'ok';
+        foreach ($articles as $key => $article) {
+            // if(count($article->comments) > 0){
+            //     var_dump($article->comments());
+            // } else {
+            //     echo '<br>no relation';
+            // }
+            $comments = $article->comments;
+            foreach ($comments as $key => $value) {
+                var_dump($value->comment);
+            }
+            // var_dump($article->comments);
+        }
+        // return $articles;
+        // ($object->comments());
+        // $articles = $object::latest('id')->paginate(5);
+        // return view('articles.index', [ 'articles' => $articles ]);
     }
 
     /**
@@ -24,7 +40,7 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -35,7 +51,11 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new \App\Models\Article();
+        $article->name = $request->name;
+        $article->description = $request->description;
+        $article->save();
+        redirect('/articles');
     }
 
     /**
@@ -46,7 +66,8 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        //
+        // return $id;
+        
     }
 
     /**

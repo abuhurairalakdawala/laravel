@@ -31,3 +31,9 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
 		'order_quantity' => rand(1,10)
 	];
 });
+$factory->define(App\Models\Article::class, function (Faker\Generator $faker) {
+	return [
+		'name' => str_random(10),
+		'description' => str_random(15)
+	];
+});
