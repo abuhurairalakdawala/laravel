@@ -1,5 +1,4 @@
 @import "variables";
-
 @font-face {
   font-family: 'Raleway';
   src: url(/fonts/raleway/Raleway-Regular.ttf);
@@ -32,6 +31,7 @@
 }
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/font-awesome/scss/font-awesome.scss";
+$relative:relative;
 .form-field-err{
   font-size:12px;
   color:#ff1744;
@@ -54,4 +54,15 @@ table{
 }
 .dashboard-go-spinner{
   display:none;
+}
+.dashboard_form{
+  position:$relative;
+}
+.table-loader{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  background-color:rgba(0,0,0,0.5);
 }
