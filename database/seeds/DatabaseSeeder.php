@@ -8,7 +8,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // factory(App\Customer::class, 50)->create();
-        // factory(App\Product::class, 1)->create();
+        // factory(App\Product::class, 50)->create();
+        // $this->add_order_status();
         $this->call(OrdersSeeder::class);
         // factory(App\Models\Article::class, 10)->create();
     }

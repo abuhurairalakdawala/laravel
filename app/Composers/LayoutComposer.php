@@ -8,6 +8,6 @@ class LayoutComposer {
 	public function compose(View $view)
 	{
 		$user = auth()->user();
-		return $view->with('username', $user->firstname.' '.$user->lastname);
+		return $view->with('username', ($user) ? $user->firstname.' '.$user->lastname : '');
 	}
 }

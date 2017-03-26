@@ -20,8 +20,6 @@ class DashboardController extends Controller
         //     var_dump($order->product()->select('id')->first()->id );
         // }
         // return( $order->product );
-     //    \App\Facades\HtmlTags::setTitle('OFT Dashboard');
-    	$data = \App\Order::orderDashboard();
         // $page_no = 1;
         // if(\Illuminate\Support\Facades\Input::has('page')){
         //     $page_no = \Illuminate\Support\Facades\Input::get('page');
@@ -49,10 +47,13 @@ class DashboardController extends Controller
         // foreach ($paginator->items() as $document) {
             // var_dump($document);
         // }
-    	return view('dashboard', [ 'table' => $data ]);
+        $data = \App\Order::orderDashboard();
+        \App\Facades\HtmlTags::setTitle('OFT Dashboard');
+        return view('dashboard', [ 'table' => $data ]);
     }
     public function solrDashboard()
     {
+        \App\Facades\HtmlTags::setTitle('OFT Dashboard');
         $filter = array();
         if(session()->has('84e656')) {
             $filter = session('84e656');
@@ -61,6 +62,18 @@ class DashboardController extends Controller
         $data = $solr->paginate(array('per_page'=>5));
         $order_status_dd = \App\OrderStatus::select('id','name')->get();
         return view('solr', [ 'data' => $data, 'order_status_dd' => $order_status_dd, 'filter' => $filter ]);
+    }
+    public function dashboardAngular()
+    {
+        $order_status_dd = \App\OrderStatus::select('id','name')->get();
+        \App\Facades\Assets::setJs('dashboard.js');
+        // \App\Facades\HtmlTags::setBaseTag('/dashboard_angular/');
+        return view('angular_dashboard', [ 'order_status_dd' => $order_status_dd ]);
+    }
+    public function solrDashboardApi()
+    {
+        $data = \App\Order::orderDashboard();
+        return array('items' => $data->items(), 'links'=>  (string)$data->links());
     }
     public function solrDashboardAction(Request $request){
         $data = [];

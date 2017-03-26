@@ -1,5 +1,6 @@
 <ul class="pagination">
     <!-- Previous Page Link -->
+    @if($paginator->total() > 0)
     @if ($paginator->onFirstPage())
         <li class="disabled"><span>&laquo;</span></li>
     @else
@@ -67,5 +68,6 @@
         <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">&raquo;</a></li>
     @else
         <li class="disabled"><span>&raquo;</span></li>
+    @endif
     @endif
 </ul>

@@ -18,22 +18,22 @@ class Assets extends Facade {
 	{
 		if(is_array($item)){
 			foreach ($item as $css) {
-				self::$css .= '<link rel="stylesheet" href="'.asset('assets/css/'.$css).'">';
+				self::$css .= '<link rel="stylesheet" href="'.mix('css/'.$css).'">';
 			}
 			unset($css);
 		} else {
-			self::$css .= '<link rel="stylesheet" href="'.asset('assets/css/'.$item).'">';
+			self::$css .= '<link rel="stylesheet" href="'.mix('css/'.$item).'">';
 		}
 	}
 	public static function setJs($item)
 	{
 		if(is_array($item)){
 			foreach ($item as $js) {
-				self::$js .= '<script type="text/javascript" src="'.asset('assets/js/'.$js).'"></script>';
+				self::$js .= '<script type="text/javascript" src="'.mix('js/'.$js).'"></script>';
 			}
 			unset($js);
 		} else {
-			self::$js .= '<script type="text/javascript" src="'.asset('assets/js/'.$item).'"></script>';
+			self::$js .= '<script type="text/javascript" src="'.mix('js/'.$item).'"></script>';
 		}
 	}
 }

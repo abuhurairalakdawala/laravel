@@ -3,7 +3,7 @@
 namespace App\Helpers;
 
 class SolrSeedFactory {
-	public $min = 1, $max = 100;
+	public $min = 51, $max = 60;
 	public function seed($collection)
 	{
 		$faker = \Faker\Factory::create();
