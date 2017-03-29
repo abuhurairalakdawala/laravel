@@ -24,6 +24,7 @@ class Solr extends Facade {
         }
         $query = $this->client->createSelect();
         $query->setStart(($page_no-1)*$options['per_page']);
+        $query->addSort('id', $query::SORT_DESC);
         $query->setRows($options['per_page']);
         $resultset = $this->client->select($query);
         $paginator = new Paginator($resultset, $resultset->getNumFound(), $options['per_page'], $page_no, [
